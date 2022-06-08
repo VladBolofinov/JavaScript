@@ -86,3 +86,6 @@ console.log(`https://someurl.com/${category}/5`);
 const user = 'Ivan';
 
 alert(`Привет, ${user}`);
+
+let incr = 10,
+    decr = 10;
