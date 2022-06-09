@@ -37,7 +37,7 @@ const a = prompt("Один из последних просмотренных ф
       c = prompt("Один из последних просмотренных фильмов?", "",),
       d = prompt("На сколько оцените его?","");
 
-personalMovieDB.movies[a] = b;
+personalMovieDB.movies[a] = b;    ←←← (синтаксис: переменная а добавляется в объект movies т.к. до этого не была создана)
 personalMovieDB.movies[c] = d;
 
 console.log(personalMovieDB); */
