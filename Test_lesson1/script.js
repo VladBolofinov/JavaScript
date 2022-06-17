@@ -64,18 +64,18 @@ console.log(arrObj.b); */
 /*  */
 
 
-/* const result = confirm("Are you here?");
+const result = confirm("Are you here?");
 console.log(result);
 
 const answer = +prompt("Вам есть 18?", "18");
 console.log(answer + 5);
 
 const answers = [];
-answers[0] = promt('Как ваше имя?' '');
-answers[1] = promt('Какова ваша фамилия?' '');
-answers[2] = promt('Сколько вам лет?' '');
+answers[0] = prompt('Как ваше имя?' '');
+answers[1] = prompt('Какова ваша фамилия?' '');
+answers[2] = prompt('Сколько вам лет?' '');
 
-document.write(answers); */
+document.write(answers);
 
 /* интерполяция */
 
