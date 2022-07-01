@@ -277,3 +277,28 @@ function showMyDB(hidden) {
 
 showMyDB(personalMovieDB.privat); 
 
+/* 
+2) Создать функцию writeYourGenres в которой пользователь будет 3 раза отвечать на вопрос 
+"Ваш любимый жанр под номером ${номер по порядку}". Каждый ответ записывается в массив данных
+genres */
+
+/* Моё решение
+    function writeYourGenres(genres) {
+    genres[0] = `${'1)'}` + prompt('Ваш любимый жанр №1', '');
+    genres[1] = `${'2)'}` + prompt('Ваш любимый жанр №2', '');
+    genres[2] = `${'3)'}` + prompt('Ваш любимый жанр №3', '');
+}
+writeYourGenres(personalMovieDB.genres);
+
+console.log(personalMovieDB); */
+
+// Нормальное решение
+
+function writeYourGenres() {
+    for (let i = 1; i <= 3; i++) {
+        personalMovieDB.genres[i-1] = prompt(`Ваш любимый жанр ${i} ?`, '');
+    }
+}
+
+writeYourGenres();
+console.log(personalMovieDB);
