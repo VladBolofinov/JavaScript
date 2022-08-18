@@ -29,7 +29,10 @@ for (let i = 0; i < liFilm.length; i++) {
 //Вверху сделано
 //Другой паттерн задачи 4,5.
 
-/* movieDB.movies.forEach((film, i) => {
+/* 
+movieList.innerHTML = ""; --- (очистит блок т.к. мы вставляем пустую строку но нужно применить
+    querySelector )
+movieDB.movies.forEach((film, i) => {
     movieList.innerHTML += `
         <li class="promo__interactive-item">${i + 1} ${film}
             <div class="delete"></div>
@@ -38,6 +41,16 @@ for (let i = 0; i < liFilm.length; i++) {
 }); */
 
 
+btnAccept[0].addEventListener('click',(event) =>{ // Вешаем обработчик события, при клике будет что-то выполнять
+    event.preventDefault();                       // При выполнении события уберёт дефолтное поведение(перезагрузку стр)
+    movieDB.movies.push(strAddFilm[1].value);     // При выполнении добавит элемент в конец массива
+    movieDB.movies.sort();                        // Сортирует в алфавитном порядке массив
+    testInner.insertAdjacentHTML("beforeend", `<li class='promo__interactive-item'> 
+    ${movieDB.movies.length - 1}) ${movieDB.movies[movieDB.movies.length - 1]}</li>`);
+    for (let i = 0; i < listFilm.length; i++) {
+        listFilm[i].textContent = `${i+1}) ${movieDB.movies[i]}`;  //Выгружает список фильмов из массива
+    }
+});
 
 
 
