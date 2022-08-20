@@ -27,10 +27,27 @@ P.S. Здесь есть несколько вариантов решения з
 let strAddFilm = document.getElementsByTagName('input'), // Обращаемся к строке ввода, чтобы могли с ней работать
     btnAccept = document.getElementsByTagName('button'), // Обращаемся к кнопке, чтобы могли с ней работать
     listFilm = document.getElementsByClassName('promo__interactive-item'), // Обращаемся к списку, чтобы работать с ним
-    movieList = document.querySelector('.promo__interactive-list');
+    movieList = document.querySelector('.promo__interactive-list'),
+    deleteIcon = document.querySelectorAll('.delete'), // Возвращает NodeList(это не псевдомассив!!!это коллекция узлов)
+    deleteIconArr = Array.from(deleteIcon); // NodeList превращаем в array, теперь можем перебирать через ForEach
+
+    deleteIconArr.forEach((icon,index) =>{          //Перебираем массив, где в call-back func эл-т перебираемого массива
+        icon.addEventListener('click',()=>{         //это icon.На каждый эл-т вешается eventListner,он сработает на клик
+            listFilm[index].textContent = `Delete`; //после чего удалит строку.2ой аргумент index это порядковый номер 
+        });                                         //эл-та массива,т.е. при клике на кнопку он будет понимать какой
+    });                                             //номер строки ему нужно удалить!
+    
+
+
+
+
+
+
+
 
 function useForm(arr,var1,var2,var3) {
     btnAccept[0].addEventListener('click',(e) =>{ // Вешаем обработчик события, при клике будет что-то выполнять
+       
         e.preventDefault();                       // При выполнении события уберёт дефолтное поведение(перезагрузку стр)
 
         if (var1[1].value.length < 21) {
@@ -40,12 +57,19 @@ function useForm(arr,var1,var2,var3) {
             arr.push(bigVar1);                      // и запишет в новую переменную, которую добавит в конец массива 
         }
         arr.sort();                        // Сортирует в алфавитном порядке массив
+
         var2.insertAdjacentHTML("beforeend", `<li class='promo__interactive-item'> 
         ${arr.length - 1}) ${arr[arr.length - 1]}</li>`);
+
         for (let i = 0; i < listFilm.length; i++) {
             var3[i].textContent = `${i+1}) ${arr[i]}`;  //Выгружает список фильмов из массива
-        }
-    });
+            var3[i].insertAdjacentHTML("beforeend", `<div class='delete'></div>`); //Иконку корзины добавит
+        } 
+
+
+        
+    });  
 }
 useForm(movieDB.movies,strAddFilm,movieList,listFilm);
+
 
